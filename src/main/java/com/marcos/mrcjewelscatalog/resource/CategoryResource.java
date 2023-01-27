@@ -1,8 +1,9 @@
 package com.marcos.mrcjewelscatalog.resource;
 
+import com.marcos.mrcjewelscatalog.dto.CategoryDTO;
 import com.marcos.mrcjewelscatalog.dto.UserDTO;
+import com.marcos.mrcjewelscatalog.services.CategoryService;
 import com.marcos.mrcjewelscatalog.services.UserService;
-import jakarta.servlet.Servlet;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,32 +15,32 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/categories")
 @RequiredArgsConstructor
-public class UserResource {
+public class CategoryResource {
 
-    private final UserService service;
+    private final CategoryService service;
 
     @GetMapping
-    public ResponseEntity<Page<UserDTO>> findAllPaged(Pageable pageable){
+    public ResponseEntity<Page<CategoryDTO>> findAllPaged(Pageable pageable){
         return ResponseEntity.ok().body(service.findAllPaged(pageable));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> findById(@PathVariable Long id){
+    public ResponseEntity<CategoryDTO> findById(@PathVariable Long id){
         return ResponseEntity.ok().body(service.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> insert(@RequestBody @Valid UserDTO dto){
-        UserDTO newDto = service.insert(dto);
+    public ResponseEntity<CategoryDTO> insert(@RequestBody @Valid CategoryDTO dto){
+        CategoryDTO newDto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
                 .buildAndExpand(newDto.getId()).toUri();
         return ResponseEntity.created(uri).body(newDto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody @Valid UserDTO dto){
+    public ResponseEntity<CategoryDTO> update(@PathVariable Long id, @RequestBody @Valid CategoryDTO dto){
         return ResponseEntity.ok().body(service.update(id,dto));
     }
 

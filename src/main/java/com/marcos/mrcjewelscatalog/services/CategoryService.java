@@ -1,10 +1,8 @@
 package com.marcos.mrcjewelscatalog.services;
 
-import com.marcos.mrcjewelscatalog.dto.UserDTO;
-import com.marcos.mrcjewelscatalog.entities.Role;
-import com.marcos.mrcjewelscatalog.entities.User;
-import com.marcos.mrcjewelscatalog.repositories.RoleRepository;
-import com.marcos.mrcjewelscatalog.repositories.UserRepository;
+import com.marcos.mrcjewelscatalog.dto.CategoryDTO;
+import com.marcos.mrcjewelscatalog.entities.Category;
+import com.marcos.mrcjewelscatalog.repositories.CategoryRepository;
 import com.marcos.mrcjewelscatalog.services.exceptions.DatabaseException;
 import com.marcos.mrcjewelscatalog.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
@@ -18,34 +16,33 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class CategoryService {
 
-    private final UserRepository repository;
-    private final RoleRepository roleRepository;
+    private final CategoryRepository repository;
 
     @Transactional
-    public UserDTO findById(Long id){
-        return new UserDTO(
+    public CategoryDTO findById(Long id){
+        return new CategoryDTO(
                 repository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Entity not found"))) ;
     }
     @Transactional
-    public UserDTO insert(UserDTO entity){
+    public CategoryDTO insert(CategoryDTO entity){
         findById(entity.getId());
-        User obj = new User();
+        Category obj = new Category();
         copyDtoToEntity(entity,obj);
-        return new UserDTO(repository.save(obj));
+        return new CategoryDTO(repository.save(obj));
     }
     @Transactional
-    public Page<UserDTO> findAllPaged(Pageable pageable) {
-        Page<User> list = repository.findAll(pageable);
-        return list.map(UserDTO::new);
+    public Page<CategoryDTO> findAllPaged(Pageable pageable) {
+        Page<Category> list = repository.findAll(pageable);
+        return list.map(CategoryDTO::new);
     }
     @Transactional
-    public UserDTO update(Long id, UserDTO dto) {
+    public CategoryDTO update(Long id, CategoryDTO dto) {
         try {
-            User user = repository.getReferenceById(id);
-            copyDtoToEntity(dto, user);
-            return new UserDTO(repository.save(user));
+            Category entity = repository.getReferenceById(id);
+            copyDtoToEntity(dto, entity);
+            return new CategoryDTO(repository.save(entity));
 
         }catch (EntityNotFoundException e){
             throw new ResourceNotFoundException("Id not found" + id);
@@ -65,16 +62,7 @@ public class UserService {
         }
     }
 
-    private void copyDtoToEntity(UserDTO entity, User obj) {
+    private void copyDtoToEntity(CategoryDTO entity, Category obj) {
         obj.setName(entity.getName());
-        obj.setEmail(entity.getEmail());
-        obj.setPassword(entity.getPassword());
-
-        obj.getRoles().clear();
-
-        entity.getRolesDTO().forEach(dto ->{
-            Role role = roleRepository.getReferenceById(dto.getId());
-            obj.getRoles().add(role);
-        });
     }
 }

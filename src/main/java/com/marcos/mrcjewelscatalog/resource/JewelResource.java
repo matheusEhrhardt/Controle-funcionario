@@ -1,8 +1,8 @@
 package com.marcos.mrcjewelscatalog.resource;
 
+import com.marcos.mrcjewelscatalog.dto.JewelDTO;
 import com.marcos.mrcjewelscatalog.dto.UserDTO;
-import com.marcos.mrcjewelscatalog.services.UserService;
-import jakarta.servlet.Servlet;
+import com.marcos.mrcjewelscatalog.services.JewelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,32 +14,32 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/jewels")
 @RequiredArgsConstructor
-public class UserResource {
+public class JewelResource {
 
-    private final UserService service;
+    private final JewelService service;
 
     @GetMapping
-    public ResponseEntity<Page<UserDTO>> findAllPaged(Pageable pageable){
+    public ResponseEntity<Page<JewelDTO>> findAllPaged(Pageable pageable){
         return ResponseEntity.ok().body(service.findAllPaged(pageable));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> findById(@PathVariable Long id){
+    public ResponseEntity<JewelDTO> findById(@PathVariable Long id){
         return ResponseEntity.ok().body(service.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> insert(@RequestBody @Valid UserDTO dto){
-        UserDTO newDto = service.insert(dto);
+    public ResponseEntity<JewelDTO> insert(@RequestBody @Valid JewelDTO dto){
+        JewelDTO newDto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
                 .buildAndExpand(newDto.getId()).toUri();
         return ResponseEntity.created(uri).body(newDto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody @Valid UserDTO dto){
+    public ResponseEntity<JewelDTO> update(@PathVariable Long id, @RequestBody @Valid JewelDTO dto){
         return ResponseEntity.ok().body(service.update(id,dto));
     }
 

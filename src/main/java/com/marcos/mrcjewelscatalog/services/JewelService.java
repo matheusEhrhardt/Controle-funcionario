@@ -1,10 +1,9 @@
 package com.marcos.mrcjewelscatalog.services;
 
-import com.marcos.mrcjewelscatalog.dto.UserDTO;
-import com.marcos.mrcjewelscatalog.entities.Role;
-import com.marcos.mrcjewelscatalog.entities.User;
-import com.marcos.mrcjewelscatalog.repositories.RoleRepository;
-import com.marcos.mrcjewelscatalog.repositories.UserRepository;
+import com.marcos.mrcjewelscatalog.dto.JewelDTO;
+import com.marcos.mrcjewelscatalog.entities.Jewel;
+import com.marcos.mrcjewelscatalog.repositories.CategoryRepository;
+import com.marcos.mrcjewelscatalog.repositories.JewelRepository;
 import com.marcos.mrcjewelscatalog.services.exceptions.DatabaseException;
 import com.marcos.mrcjewelscatalog.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
@@ -18,34 +17,34 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class JewelService {
 
-    private final UserRepository repository;
-    private final RoleRepository roleRepository;
+    private final JewelRepository repository;
+    private final CategoryRepository categoryRepository;
 
     @Transactional
-    public UserDTO findById(Long id){
-        return new UserDTO(
+    public JewelDTO findById(Long id){
+        return new JewelDTO(
                 repository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Entity not found"))) ;
     }
     @Transactional
-    public UserDTO insert(UserDTO entity){
+    public JewelDTO insert(JewelDTO entity){
         findById(entity.getId());
-        User obj = new User();
+        Jewel obj = new Jewel();
         copyDtoToEntity(entity,obj);
-        return new UserDTO(repository.save(obj));
+        return new JewelDTO(repository.save(obj));
     }
     @Transactional
-    public Page<UserDTO> findAllPaged(Pageable pageable) {
-        Page<User> list = repository.findAll(pageable);
-        return list.map(UserDTO::new);
+    public Page<JewelDTO> findAllPaged(Pageable pageable) {
+        Page<Jewel> list = repository.findAll(pageable);
+        return list.map(JewelDTO::new);
     }
     @Transactional
-    public UserDTO update(Long id, UserDTO dto) {
+    public JewelDTO update(Long id, JewelDTO dto) {
         try {
-            User user = repository.getReferenceById(id);
-            copyDtoToEntity(dto, user);
-            return new UserDTO(repository.save(user));
+            Jewel entity = repository.getReferenceById(id);
+            copyDtoToEntity(dto, entity);
+            return new JewelDTO(repository.save(entity));
 
         }catch (EntityNotFoundException e){
             throw new ResourceNotFoundException("Id not found" + id);
@@ -65,16 +64,11 @@ public class UserService {
         }
     }
 
-    private void copyDtoToEntity(UserDTO entity, User obj) {
-        obj.setName(entity.getName());
-        obj.setEmail(entity.getEmail());
-        obj.setPassword(entity.getPassword());
-
-        obj.getRoles().clear();
-
-        entity.getRolesDTO().forEach(dto ->{
-            Role role = roleRepository.getReferenceById(dto.getId());
-            obj.getRoles().add(role);
-        });
+    private void copyDtoToEntity(JewelDTO entity, Jewel obj) {
+       obj.setName(entity.getName());
+       obj.setDescription(entity.getDescription());
+       obj.setWeight(entity.getWeight());
+       obj.setPrice(entity.getPrice());
+       obj.setCategory(categoryRepository.getReferenceById(entity.getCategoryDTO().getId()));
     }
 }
