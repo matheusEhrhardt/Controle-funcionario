@@ -1,5 +1,6 @@
 package com.marcos.mrcjewelscatalog.entities;
 
+import com.marcos.mrcjewelscatalog.entities.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,12 +14,15 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "tb_role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String authority;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, unique = true)
+    private RoleEnum authority;
 
     @Override
     public boolean equals(Object o) {

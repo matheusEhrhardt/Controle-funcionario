@@ -1,7 +1,6 @@
 package com.marcos.mrcjewelscatalog.resource;
 
-import com.marcos.mrcjewelscatalog.dto.JewelDTO;
-import com.marcos.mrcjewelscatalog.dto.UserDTO;
+import com.marcos.mrcjewelscatalog.entities.dto.JewelDTO;
 import com.marcos.mrcjewelscatalog.services.JewelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

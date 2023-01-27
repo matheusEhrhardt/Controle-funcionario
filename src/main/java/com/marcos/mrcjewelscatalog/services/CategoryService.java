@@ -1,6 +1,6 @@
 package com.marcos.mrcjewelscatalog.services;
 
-import com.marcos.mrcjewelscatalog.dto.CategoryDTO;
+import com.marcos.mrcjewelscatalog.entities.dto.CategoryDTO;
 import com.marcos.mrcjewelscatalog.entities.Category;
 import com.marcos.mrcjewelscatalog.repositories.CategoryRepository;
 import com.marcos.mrcjewelscatalog.services.exceptions.DatabaseException;

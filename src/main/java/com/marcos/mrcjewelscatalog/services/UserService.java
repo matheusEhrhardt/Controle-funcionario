@@ -1,6 +1,6 @@
 package com.marcos.mrcjewelscatalog.services;
 
-import com.marcos.mrcjewelscatalog.dto.UserDTO;
+import com.marcos.mrcjewelscatalog.entities.dto.UserDTO;
 import com.marcos.mrcjewelscatalog.entities.Role;
 import com.marcos.mrcjewelscatalog.entities.User;
 import com.marcos.mrcjewelscatalog.repositories.RoleRepository;
@@ -30,7 +30,6 @@ public class UserService {
     }
     @Transactional
     public UserDTO insert(UserDTO entity){
-        findById(entity.getId());
         User obj = new User();
         copyDtoToEntity(entity,obj);
         return new UserDTO(repository.save(obj));

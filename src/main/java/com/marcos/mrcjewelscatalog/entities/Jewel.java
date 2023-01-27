@@ -14,14 +14,17 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "tb_jewel")
 public class Jewel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(nullable = false)
     private Long id;
+    @Column(nullable = false)
     private String name;
     private String description;
     private Double weight;
+    private String size;
     private Double price;
     @ManyToOne
     @JoinColumn(name = "category_id")

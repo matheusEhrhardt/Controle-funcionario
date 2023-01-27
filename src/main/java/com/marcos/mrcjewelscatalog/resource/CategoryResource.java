@@ -1,9 +1,7 @@
 package com.marcos.mrcjewelscatalog.resource;
 
-import com.marcos.mrcjewelscatalog.dto.CategoryDTO;
-import com.marcos.mrcjewelscatalog.dto.UserDTO;
+import com.marcos.mrcjewelscatalog.entities.dto.CategoryDTO;
 import com.marcos.mrcjewelscatalog.services.CategoryService;
-import com.marcos.mrcjewelscatalog.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

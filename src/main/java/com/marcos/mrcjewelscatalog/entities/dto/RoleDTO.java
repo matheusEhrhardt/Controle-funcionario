@@ -1,6 +1,7 @@
-package com.marcos.mrcjewelscatalog.dto;
+package com.marcos.mrcjewelscatalog.entities.dto;
 
 import com.marcos.mrcjewelscatalog.entities.Role;
+import com.marcos.mrcjewelscatalog.entities.enums.RoleEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +14,7 @@ import java.util.Objects;
 public class RoleDTO {
 
     private Long id;
-    private String authority;
+    private RoleEnum authority;
 
     public RoleDTO(Role role) {
         this.id = role.getId();

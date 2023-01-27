@@ -1,6 +1,6 @@
 package com.marcos.mrcjewelscatalog.services;
 
-import com.marcos.mrcjewelscatalog.dto.JewelDTO;
+import com.marcos.mrcjewelscatalog.entities.dto.JewelDTO;
 import com.marcos.mrcjewelscatalog.entities.Jewel;
 import com.marcos.mrcjewelscatalog.repositories.CategoryRepository;
 import com.marcos.mrcjewelscatalog.repositories.JewelRepository;
@@ -68,6 +68,7 @@ public class JewelService {
        obj.setName(entity.getName());
        obj.setDescription(entity.getDescription());
        obj.setWeight(entity.getWeight());
+       obj.setPrice(entity.getPrice());
        obj.setPrice(entity.getPrice());
        obj.setCategory(categoryRepository.getReferenceById(entity.getCategoryDTO().getId()));
     }

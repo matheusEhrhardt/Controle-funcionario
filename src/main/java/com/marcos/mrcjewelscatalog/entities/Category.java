@@ -13,6 +13,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "tb_category")
 public class Category {
 
     @Id

@@ -8,11 +8,11 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "tb_user")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "tb_user")
 public class User {
 
     @Id
@@ -20,10 +20,15 @@ public class User {
     @Column(nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+
     @Column(unique = true,nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_user_role",
                 joinColumns = @JoinColumn(name = "user_id"),

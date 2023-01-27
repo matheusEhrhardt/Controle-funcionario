@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.dto;
+package com.marcos.mrcjewelscatalog.entities.dto;
 
 import com.marcos.mrcjewelscatalog.entities.User;
 import lombok.Getter;
