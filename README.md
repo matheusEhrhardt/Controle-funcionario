@@ -1,0 +1,41 @@
+# MRC-jewels-catalog
+
+# Sobre o projeto
+
+MRC-jewels-catalog é uma API feita para armazenar, manipular e trazer dados, para armazenar e manipular os dados o usuário deverá possuir uma autenticação
+para acessar recursos específicos.
+
+As informações que iram ser exibidas no catálogo para os visitantes teram acesso público.
+
+A intenção da API e de ser usado junto ao front para exibir um Catálogo de Joias, que será usado como portfólio de produtos de uma joalheria.
+
+# Modelo Conceitual
+![Modelo Conceitual](https://github.com/marc-andrade/MRC-jewels-catalog/blob/main/UML%20doc%20and%20IMG/uml-diagram.png)
+
+# Tecnologias utilizadas
+## Back end
+- Java 17
+- Spring Boot
+- JPA / Hibernate
+- Maven
+- H2.Database
+- Lombok
+- Spring Security
+- Spring Validation
+- JWT
+## Implantação em produção
+- Back end: Heroku
+- Banco de dados: H2
+
+## Back end
+Pré-requisitos: Java 17
+
+# clonar repositório
+git clone https://github.com/marc-andrade/MRC-jewels-catalog
+
+# Autor
+
+Marcos Quadros Andrade
+
+https://www.linkedin.com/in/marcos-quadros-andrade-2a5bb6142/
+
