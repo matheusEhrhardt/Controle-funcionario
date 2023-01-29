@@ -1,12 +1,12 @@
 package com.marcos.mrcjewelscatalog.entities.dto;
 
 import com.marcos.mrcjewelscatalog.entities.User;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -17,20 +17,20 @@ import java.util.Set;
 public class UserDTO {
 
     private Long id;
-    @NotBlank(message = "campo obrigatório")
+    @NotBlank(message = "Campo obrigatório")
     private String name;
-    @Email(message = "Favor entrar um email válido")
+    @Email(message = "Informe um email válido")
     private String email;
-    @NotBlank(message = "campo obrigatório")
+    @NotBlank(message = "Campo obrigatório")
     private String password;
-    private Set<RoleDTO> rolesDTO = new HashSet<>();
+    private Set<RoleDTO> roles = new HashSet<>();
 
     public UserDTO(User user) {
         this.id = user.getId();
-        this.name = user.getName();
+        this.name = user.getFullName();
         this.email = user.getEmail();
         this.password = user.getPassword();
-        user.getRoles().forEach(role -> rolesDTO.add(new RoleDTO(role))); ;
+        user.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
     }
 
     @Override

@@ -1,11 +1,11 @@
 package com.marcos.mrcjewelscatalog.entities.dto;
 
 import com.marcos.mrcjewelscatalog.entities.Jewel;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Getter

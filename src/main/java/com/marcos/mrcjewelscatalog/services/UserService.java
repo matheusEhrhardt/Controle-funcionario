@@ -1,8 +1,9 @@
 package com.marcos.mrcjewelscatalog.services;
 
-import com.marcos.mrcjewelscatalog.entities.dto.UserDTO;
 import com.marcos.mrcjewelscatalog.entities.Role;
 import com.marcos.mrcjewelscatalog.entities.User;
+import com.marcos.mrcjewelscatalog.entities.dto.RoleDTO;
+import com.marcos.mrcjewelscatalog.entities.dto.UserDTO;
 import com.marcos.mrcjewelscatalog.repositories.RoleRepository;
 import com.marcos.mrcjewelscatalog.repositories.UserRepository;
 import com.marcos.mrcjewelscatalog.services.exceptions.DatabaseException;
@@ -14,6 +15,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,32 +24,46 @@ public class UserService {
 
     private final UserRepository repository;
     private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public UserDTO findById(Long id){
         return new UserDTO(
                 repository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Entity not found"))) ;
     }
+
     @Transactional
     public UserDTO insert(UserDTO entity){
-        User obj = new User();
-        copyDtoToEntity(entity,obj);
-        return new UserDTO(repository.save(obj));
+        try {
+            User obj = new User();
+            copyDtoToEntity(entity, obj);
+            obj.setPassword(passwordEncoder.encode(entity.getPassword()));
+            return new UserDTO(repository.save(obj));
+
+        }catch (DataIntegrityViolationException e){
+            throw new DatabaseException("Email já cadastrado");
+        }
+
     }
     @Transactional
     public Page<UserDTO> findAllPaged(Pageable pageable) {
         Page<User> list = repository.findAll(pageable);
         return list.map(UserDTO::new);
     }
+
     @Transactional
     public UserDTO update(Long id, UserDTO dto) {
         try {
             User user = repository.getReferenceById(id);
             copyDtoToEntity(dto, user);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             return new UserDTO(repository.save(user));
 
         }catch (EntityNotFoundException e){
-            throw new ResourceNotFoundException("Id not found" + id);
+            throw new ResourceNotFoundException("Id not found " + id);
+
+        }catch (DataIntegrityViolationException e){
+            throw new DatabaseException("Email já cadastrado");
         }
     }
     @Transactional
@@ -65,15 +81,19 @@ public class UserService {
     }
 
     private void copyDtoToEntity(UserDTO entity, User obj) {
-        obj.setName(entity.getName());
+        obj.setFullName(entity.getName());
         obj.setEmail(entity.getEmail());
         obj.setPassword(entity.getPassword());
 
+        if (entity.getRoles().isEmpty()){
+            entity.getRoles().add(new RoleDTO(2L, "ROLE_USER"));
+        }
         obj.getRoles().clear();
 
-        entity.getRolesDTO().forEach(dto ->{
+        entity.getRoles().forEach(dto ->{
             Role role = roleRepository.getReferenceById(dto.getId());
             obj.getRoles().add(role);
         });
     }
+
 }

@@ -4,16 +4,15 @@ import com.marcos.mrcjewelscatalog.entities.Category;
 import com.marcos.mrcjewelscatalog.entities.Jewel;
 import com.marcos.mrcjewelscatalog.entities.Role;
 import com.marcos.mrcjewelscatalog.entities.User;
-import com.marcos.mrcjewelscatalog.entities.enums.RoleEnum;
 import com.marcos.mrcjewelscatalog.repositories.CategoryRepository;
 import com.marcos.mrcjewelscatalog.repositories.JewelRepository;
 import com.marcos.mrcjewelscatalog.repositories.RoleRepository;
 import com.marcos.mrcjewelscatalog.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -23,20 +22,21 @@ public class DBService {
     private final RoleRepository roleRepository;
     private final CategoryRepository categoryRepository;
     private final JewelRepository jewelRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public void instanciaDB(){
 
-        Role role1 = new Role(null,RoleEnum.ADMIN);
-        Role role2 = new Role(null, RoleEnum.USER);
+        Role role1 = new Role(null,"ROLE_ADMIN");
+        Role role2 = new Role(null, "ROLE_USER");
 
         User user1 = new User(null,
                 "Marcos Andrade",
                 "marcos@email.com",
-                "123", Set.of(role1));
+                passwordEncoder.encode("123"), List.of(role1,role2));
         User user2 = new User(null,
                 "Rildo Andrade",
                 "rildo@email.com",
-                "123", Set.of(role2));
+                passwordEncoder.encode("123"), List.of(role2));
 
         Category category1 = new Category(null, "Colar");
         Category category2 = new Category(null, "Pulseira");
@@ -77,6 +77,7 @@ public class DBService {
 
         roleRepository.saveAll(List.of(role1,role2));
         userRepository.saveAll(List.of(user1,user2));
+
 
         categoryRepository.saveAll(List.of(category1,category2,category3));
         jewelRepository.saveAll(List.of(jwl1,jwl2,jwl3,jwl4));

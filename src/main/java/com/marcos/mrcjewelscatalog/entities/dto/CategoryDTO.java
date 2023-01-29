@@ -1,11 +1,11 @@
 package com.marcos.mrcjewelscatalog.entities.dto;
 
 import com.marcos.mrcjewelscatalog.entities.Category;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Getter
@@ -13,6 +13,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class CategoryDTO {
 
+    //criar outro dto de insert e mexer no service
     private Long id;
     @NotBlank(message = "campo obrigatório")
     private String name;

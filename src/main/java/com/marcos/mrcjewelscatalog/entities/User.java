@@ -10,6 +10,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,7 +24,7 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String fullName;
 
     @Column(unique = true,nullable = false)
     private String email;
@@ -35,7 +36,7 @@ public class User implements UserDetails {
     @JoinTable(name = "tb_user_role",
                 joinColumns = @JoinColumn(name = "user_id"),
                 inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    private List<Role> roles = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
@@ -52,7 +53,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority().getDescriptionRole()))
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority()))
                 .collect(Collectors.toList());
     }
 
@@ -83,6 +84,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

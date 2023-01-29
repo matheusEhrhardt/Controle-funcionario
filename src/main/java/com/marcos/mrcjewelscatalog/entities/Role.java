@@ -1,6 +1,5 @@
 package com.marcos.mrcjewelscatalog.entities;
 
-import com.marcos.mrcjewelscatalog.entities.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,9 +19,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true)
-    private RoleEnum authority;
+    private String authority;
 
     @Override
     public boolean equals(Object o) {
