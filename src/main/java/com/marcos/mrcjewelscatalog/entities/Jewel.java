@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -22,6 +21,7 @@ public class Jewel {
     private Long id;
     @Column(nullable = false)
     private String name;
+    private String imgUrl;
     private String description;
     private Double weight;
     private String size;

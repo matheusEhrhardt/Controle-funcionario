@@ -18,6 +18,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -55,15 +58,19 @@ public class UserService {
     public UserDTO update(Long id, UserDTO dto) {
         try {
             User user = repository.getReferenceById(id);
+            Optional<User> checkExistsEmail = repository.findByEmail(dto.getEmail());
+
+            if (checkExistsEmail.isPresent()){
+                if (!(Objects.equals(checkExistsEmail.get().getId(), id))){
+                    throw new DatabaseException("Email ja existe");
+                }
+            }
             copyDtoToEntity(dto, user);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             return new UserDTO(repository.save(user));
 
         }catch (EntityNotFoundException e){
             throw new ResourceNotFoundException("Id not found " + id);
-
-        }catch (DataIntegrityViolationException e){
-            throw new DatabaseException("Email já cadastrado");
         }
     }
     @Transactional

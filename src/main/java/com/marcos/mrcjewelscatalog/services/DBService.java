@@ -45,6 +45,7 @@ public class DBService {
         Jewel jwl1 = new Jewel(
                 null,
                 "Colar de Ouro",
+                "",
                 "Colar de ouro 25 quilates estilo rapper",
                 15.8,
                 "Tamanho Grande",
@@ -53,6 +54,7 @@ public class DBService {
         Jewel jwl2 = new Jewel(
                 null,
                 "Colar de Prata",
+                "",
                 "Colar de Prata estilo rapper",
                 null,
                 "Tamanho Medio",
@@ -61,6 +63,7 @@ public class DBService {
         Jewel jwl3 = new Jewel(
                 null,
                 "Pulseira de Ouro",
+                "",
                 "Pulseiro de ouro estilo casual",
                 11.4,
                 "Tamanho Grande",
@@ -69,6 +72,7 @@ public class DBService {
         Jewel jwl4 = new Jewel(
                 null,
                 "Anel de Formatura",
+                "",
                 "Anel de formatura, customziado para seu curso.",
                 20.4,
                 "Medido do Cliente",

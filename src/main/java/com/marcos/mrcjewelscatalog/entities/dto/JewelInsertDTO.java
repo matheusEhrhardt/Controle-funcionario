@@ -1,6 +1,7 @@
 package com.marcos.mrcjewelscatalog.entities.dto;
 
-import com.marcos.mrcjewelscatalog.entities.Jewel;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,33 +11,25 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
-public class JewelDTO {
+public class JewelInsertDTO {
 
     private Long id;
+    @NotBlank(message = "campo obrigatório")
     private String name;
     private String imgUrl;
     private String description;
     private Double weight;
     private Double price;
     private String size;
-    private CategoryDTO categoryDTO;
+    @NotNull
+    private Long categoryId;
 
-    public JewelDTO(Jewel entity) {
-        this.id = entity.getId();
-        this.name = entity.getName();
-        this.imgUrl = entity.getImgUrl();
-        this.description = entity.getDescription();
-        this.weight = entity.getWeight();
-        this.price = entity.getPrice();
-        this.size = entity.getSize();
-        this.categoryDTO = new CategoryDTO(entity.getCategory());
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        JewelDTO roleDTO = (JewelDTO) o;
+        JewelInsertDTO roleDTO = (JewelInsertDTO) o;
         return Objects.equals(id, roleDTO.id);
     }
 

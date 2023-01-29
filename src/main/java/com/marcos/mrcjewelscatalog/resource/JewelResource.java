@@ -1,6 +1,7 @@
 package com.marcos.mrcjewelscatalog.resource;
 
 import com.marcos.mrcjewelscatalog.entities.dto.JewelDTO;
+import com.marcos.mrcjewelscatalog.entities.dto.JewelInsertDTO;
 import com.marcos.mrcjewelscatalog.services.JewelService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +31,7 @@ public class JewelResource {
     }
 
     @PostMapping
-    public ResponseEntity<JewelDTO> insert(@RequestBody @Valid JewelDTO dto){
+    public ResponseEntity<JewelDTO> insert(@RequestBody @Valid JewelInsertDTO dto){
         JewelDTO newDto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
                 .buildAndExpand(newDto.getId()).toUri();
@@ -38,7 +39,7 @@ public class JewelResource {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<JewelDTO> update(@PathVariable Long id, @RequestBody @Valid JewelDTO dto){
+    public ResponseEntity<JewelDTO> update(@PathVariable Long id, @RequestBody @Valid JewelInsertDTO dto){
         return ResponseEntity.ok().body(service.update(id,dto));
     }
 

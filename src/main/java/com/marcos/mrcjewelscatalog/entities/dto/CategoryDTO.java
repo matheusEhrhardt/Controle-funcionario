@@ -13,7 +13,6 @@ import java.util.Objects;
 @NoArgsConstructor
 public class CategoryDTO {
 
-    //criar outro dto de insert e mexer no service
     private Long id;
     @NotBlank(message = "campo obrigatório")
     private String name;

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -41,6 +42,11 @@ public class SecurityConfiguration {
         .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                 .requestMatchers(antMatcher("/login/token/**")).permitAll()
+                .requestMatchers(antMatcher("/users/**")).hasRole("ADMIN")
+                .requestMatchers(antMatcher(HttpMethod.GET,"/jewels/**")).permitAll()
+                .requestMatchers(antMatcher("/jewels/**")).hasAnyRole("ADMIN","USER")
+                .requestMatchers(antMatcher(HttpMethod.GET,"/categories/**")).permitAll()
+                .requestMatchers(antMatcher("/categories/**")).hasAnyRole("ADMIN","USER")
                 .anyRequest().authenticated());
 
         http

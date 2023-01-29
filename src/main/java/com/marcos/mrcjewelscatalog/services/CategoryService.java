@@ -27,7 +27,6 @@ public class CategoryService {
     }
     @Transactional
     public CategoryDTO insert(CategoryDTO entity){
-        findById(entity.getId());
         Category obj = new Category();
         copyDtoToEntity(entity,obj);
         return new CategoryDTO(repository.save(obj));
@@ -45,7 +44,7 @@ public class CategoryService {
             return new CategoryDTO(repository.save(entity));
 
         }catch (EntityNotFoundException e){
-            throw new ResourceNotFoundException("Id not found" + id);
+            throw new ResourceNotFoundException("Id not found " + id);
         }
     }
     @Transactional

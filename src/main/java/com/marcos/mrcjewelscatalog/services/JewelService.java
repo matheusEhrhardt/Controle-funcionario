@@ -2,6 +2,7 @@ package com.marcos.mrcjewelscatalog.services;
 
 import com.marcos.mrcjewelscatalog.entities.dto.JewelDTO;
 import com.marcos.mrcjewelscatalog.entities.Jewel;
+import com.marcos.mrcjewelscatalog.entities.dto.JewelInsertDTO;
 import com.marcos.mrcjewelscatalog.repositories.CategoryRepository;
 import com.marcos.mrcjewelscatalog.repositories.JewelRepository;
 import com.marcos.mrcjewelscatalog.services.exceptions.DatabaseException;
@@ -28,11 +29,11 @@ public class JewelService {
                 repository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Entity not found"))) ;
     }
     @Transactional
-    public JewelDTO insert(JewelDTO entity){
-        findById(entity.getId());
-        Jewel obj = new Jewel();
-        copyDtoToEntity(entity,obj);
-        return new JewelDTO(repository.save(obj));
+    public JewelDTO insert(JewelInsertDTO entity){
+
+            Jewel obj = new Jewel();
+            copyInsertDtoToEntity(entity,obj);
+            return new JewelDTO(repository.save(obj));
     }
     @Transactional
     public Page<JewelDTO> findAllPaged(Pageable pageable) {
@@ -40,14 +41,14 @@ public class JewelService {
         return list.map(JewelDTO::new);
     }
     @Transactional
-    public JewelDTO update(Long id, JewelDTO dto) {
+    public JewelDTO update(Long id, JewelInsertDTO dto) {
         try {
             Jewel entity = repository.getReferenceById(id);
-            copyDtoToEntity(dto, entity);
+            copyInsertDtoToEntity(dto,entity);
             return new JewelDTO(repository.save(entity));
 
         }catch (EntityNotFoundException e){
-            throw new ResourceNotFoundException("Id not found" + id);
+            throw new ResourceNotFoundException("Id not found " + id);
         }
     }
     @Transactional
@@ -64,12 +65,13 @@ public class JewelService {
         }
     }
 
-    private void copyDtoToEntity(JewelDTO entity, Jewel obj) {
-       obj.setName(entity.getName());
-       obj.setDescription(entity.getDescription());
-       obj.setWeight(entity.getWeight());
-       obj.setPrice(entity.getPrice());
-       obj.setPrice(entity.getPrice());
-       obj.setCategory(categoryRepository.getReferenceById(entity.getCategoryDTO().getId()));
+    private void copyInsertDtoToEntity(JewelInsertDTO entity, Jewel obj) {
+        obj.setName(entity.getName());
+        obj.setImgUrl(entity.getImgUrl());
+        obj.setDescription(entity.getDescription());
+        obj.setWeight(entity.getWeight());
+        obj.setPrice(entity.getPrice());
+        obj.setPrice(entity.getPrice());
+        obj.setCategory(categoryRepository.getReferenceById(entity.getCategoryId()));
     }
 }
