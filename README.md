@@ -16,14 +16,15 @@ A intenção da API e de ser usado junto ao front para exibir um Catálogo de Jo
 # Tecnologias utilizadas
 ## Back end
 - Java 17
-- Spring Boot
-- JPA / Hibernate
-- Maven
+- Spring Boot 3
+- Spring Security 6
+- Spring Validation
 - H2.Database
 - Lombok
-- Spring Security
-- Spring Validation
 - JWT
+- JPA / Hibernate
+- Maven
+
 ## Implantação em produção
 - Back end: Heroku
 - Banco de dados: H2
