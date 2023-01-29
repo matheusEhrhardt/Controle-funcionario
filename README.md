@@ -26,7 +26,7 @@ A intenção da API e de ser usado junto ao front para exibir um Catálogo de Jo
 - Maven
 
 ## Implantação em produção
-- Back end: Heroku
+- Back end: 
 - Banco de dados: H2
 
 ## Back end
