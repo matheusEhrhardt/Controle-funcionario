@@ -2,8 +2,9 @@
 
 # Sobre o projeto
 
-MRC-jewels-catalog é uma API feita para armazenar, manipular e trazer dados, para armazenar e manipular os dados o usuário deverá possuir uma autenticação
-para acessar recursos específicos.
+MRC-jewels-catalog é uma API feita para armazenar, manipular e trazer dados.
+
+Para armazenar e manipular os dados o usuário deverá possuir as autenticações: "ADMIN" para todos os recursos, "USER" para recursos limitados.
 
 As informações que iram ser exibidas no catálogo para os visitantes teram acesso público.
 
