@@ -26,8 +26,10 @@ A intenção da API e de ser usado junto ao front para exibir um Catálogo de Jo
 - Maven
 
 ## Implantação em produção
-- Back end: Heroku
+- Back end: railway
 - Banco de dados: H2
+
+link deploy: mrc-jewels-catalog-backend-production.up.railway.app 
 
 ## Back end
 Pré-requisitos: Java 17
