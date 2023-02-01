@@ -33,9 +33,17 @@ public class DBService {
                 "Marcos Andrade",
                 "marcos@email.com",
                 passwordEncoder.encode("123"), List.of(role1,role2));
+        User user3 = new User(null,
+                "Lucas Dosvaldo",
+                "lucas@email.com",
+                passwordEncoder.encode("123"), List.of(role1));
+        User user4 = new User(null,
+                "admin",
+                "admin@email.com",
+                passwordEncoder.encode("123"), List.of(role1));
         User user2 = new User(null,
-                "Rildo Andrade",
-                "rildo@email.com",
+                "User",
+                "user@email.com",
                 passwordEncoder.encode("123"), List.of(role2));
 
         Category category1 = new Category(null, "Colar");
@@ -80,7 +88,7 @@ public class DBService {
                 category3);
 
         roleRepository.saveAll(List.of(role1,role2));
-        userRepository.saveAll(List.of(user1,user2));
+        userRepository.saveAll(List.of(user1,user2,user3,user4));
 
 
         categoryRepository.saveAll(List.of(category1,category2,category3));
