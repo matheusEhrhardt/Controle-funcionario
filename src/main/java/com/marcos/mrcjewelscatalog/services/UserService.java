@@ -13,11 +13,11 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -49,9 +49,11 @@ public class UserService {
 
     }
     @Transactional
-    public Page<UserDTO> findAllPaged(Pageable pageable) {
-        Page<User> list = repository.findAll(pageable);
-        return list.map(UserDTO::new);
+    public List<UserDTO> findAll() {
+        List<User> list = repository.findAll();
+        List<UserDTO> listDto = new ArrayList<>();
+        list.forEach(x -> listDto.add(new UserDTO(x)));
+        return listDto;
     }
 
     @Transactional

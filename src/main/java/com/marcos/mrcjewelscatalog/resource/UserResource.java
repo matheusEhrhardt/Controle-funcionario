@@ -4,13 +4,13 @@ import com.marcos.mrcjewelscatalog.entities.dto.UserDTO;
 import com.marcos.mrcjewelscatalog.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -20,8 +20,8 @@ public class UserResource {
     private final UserService service;
 
     @GetMapping
-    public ResponseEntity<Page<UserDTO>> findAllPaged(Pageable pageable){
-        return ResponseEntity.ok().body(service.findAllPaged(pageable));
+    public ResponseEntity<List<UserDTO>> findAll(){
+        return ResponseEntity.ok().body(service.findAll());
     }
 
     @GetMapping("/{id}")
