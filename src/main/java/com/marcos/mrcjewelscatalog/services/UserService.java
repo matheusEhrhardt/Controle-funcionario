@@ -59,17 +59,16 @@ public class UserService {
     @Transactional
     public UserDTO update(Long id, UserDTO dto) {
         try {
-            User user = repository.getReferenceById(id);
-            Optional<User> checkExistsEmail = repository.findByEmail(dto.getEmail());
+            User oldUser = repository.getReferenceById(id);
 
-            if (checkExistsEmail.isPresent()){
-                if (!(Objects.equals(checkExistsEmail.get().getId(), id))){
-                    throw new DatabaseException("Email ja existe");
-                }
+            if(!dto.getPassword().equals(oldUser.getPassword())){
+                dto.setPassword(passwordEncoder.encode(dto.getPassword()));
             }
-            copyDtoToEntity(dto, user);
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            return new UserDTO(repository.save(user));
+
+            checkExistsEmail(dto);
+            copyDtoToEntity(dto, oldUser);
+
+            return new UserDTO(repository.save(oldUser));
 
         }catch (EntityNotFoundException e){
             throw new ResourceNotFoundException("Id not found " + id);
@@ -103,6 +102,13 @@ public class UserService {
             Role role = roleRepository.getReferenceById(dto.getId());
             obj.getRoles().add(role);
         });
+    }
+
+    private void checkExistsEmail(UserDTO dto){
+        Optional<User> obj = repository.findByEmail(dto.getEmail());
+        if (obj.isPresent() && !Objects.equals(obj.get().getId(), dto.getId())) {
+            throw new DataIntegrityViolationException("E-mail já cadastrado no sistema!");
+        }
     }
 
 }
