@@ -52,39 +52,48 @@ public class DBService {
 
         Jewel jwl1 = new Jewel(
                 null,
-                "Colar de Ouro",
-                "",
-                "Colar de ouro 25 quilates estilo rapper",
-                15.8,
-                "Tamanho Grande",
+                "Colar de Ouro Cravejado de Cristais",
+                "https://images.pexels.com/photos/14999288/pexels-photo-14999288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                1.3,
+                "45 cm",
                 1800.25,
                 category1);
         Jewel jwl2 = new Jewel(
                 null,
-                "Colar de Prata",
-                "",
-                "Colar de Prata estilo rapper",
-                null,
-                "Tamanho Medio",
-                900.25,
-                category1);
+                "Anel 18k cravejado com diamantes e rubi",
+                "https://images.pexels.com/photos/9838851/pexels-photo-9838851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                3.4,
+                "Sobre Medida",
+                2709.9,
+                category3);
         Jewel jwl3 = new Jewel(
                 null,
                 "Pulseira de Ouro",
-                "",
-                "Pulseiro de ouro estilo casual",
-                11.4,
-                "Tamanho Grande",
+                "https://images.pexels.com/photos/12124638/pexels-photo-12124638.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                0.7,
+                "18 cm",
                 400.25,
                 category2);
         Jewel jwl4 = new Jewel(
                 null,
                 "Anel de Formatura",
-                "",
+                "https://images.pexels.com/photos/9838851/pexels-photo-9838851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 "Anel de formatura, customziado para seu curso.",
-                20.4,
-                "Medido do Cliente",
-                800.25,
+                4.4,
+                "Sobre Medida",
+                2600.25,
+                category3);
+        Jewel jwl5 = new Jewel(
+                null,
+                "Aliança de casamento",
+                "https://images.pexels.com/photos/6479595/pexels-photo-6479595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "Linda aliança de casamento com um inigualável diamante",
+                3.8,
+                "Sobre Medida",
+                2600.25,
                 category3);
 
         roleRepository.saveAll(List.of(role1,role2));
@@ -92,6 +101,6 @@ public class DBService {
 
 
         categoryRepository.saveAll(List.of(category1,category2,category3));
-        jewelRepository.saveAll(List.of(jwl1,jwl2,jwl3,jwl4));
+        jewelRepository.saveAll(List.of(jwl1,jwl2,jwl3,jwl4,jwl5));
     }
 }
