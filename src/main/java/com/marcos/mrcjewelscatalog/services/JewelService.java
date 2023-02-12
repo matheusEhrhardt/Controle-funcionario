@@ -71,7 +71,7 @@ public class JewelService {
         obj.setDescription(entity.getDescription());
         obj.setWeight(entity.getWeight());
         obj.setPrice(entity.getPrice());
-        obj.setPrice(entity.getPrice());
+        obj.setSize(entity.getSize());
         obj.setCategory(categoryRepository.getReferenceById(entity.getCategoryId()));
     }
 }
