@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.model.error;
+package com.wpe.controle_funcionario.view.model.error;
 
 public class ErrorMessage {
 

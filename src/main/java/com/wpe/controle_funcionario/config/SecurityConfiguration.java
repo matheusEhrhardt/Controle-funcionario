@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.config;
+package com.wpe.controle_funcionario.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -41,13 +41,11 @@ public class SecurityConfiguration {
         .disable()
             .cors(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                 .requestMatchers(antMatcher("/login/token/**")).permitAll()
-                .requestMatchers(antMatcher("/users/**")).hasRole("ADMIN")
+                //.requestMatchers(antMatcher("/usuario/**")).hasRole("ADMIN")
+                .requestMatchers(antMatcher("/usuario/**")).permitAll()
                 .requestMatchers(antMatcher(HttpMethod.GET,"/jewels/**")).permitAll()
                 .requestMatchers(antMatcher("/jewels/**")).hasAnyRole("ADMIN","USER")
-                .requestMatchers(antMatcher(HttpMethod.GET,"/categories/**")).permitAll()
-                .requestMatchers(antMatcher("/categories/**")).hasAnyRole("ADMIN","USER")
                 .anyRequest().authenticated());
 
         http

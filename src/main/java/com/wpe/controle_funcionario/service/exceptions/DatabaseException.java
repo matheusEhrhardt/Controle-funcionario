@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.services.exceptions;
+package com.wpe.controle_funcionario.service.exceptions;
 
 public class DatabaseException extends RuntimeException{
 

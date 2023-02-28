@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.resource.exceptions;
+package com.wpe.controle_funcionario.resource.exceptions;
 
 import lombok.Getter;
 

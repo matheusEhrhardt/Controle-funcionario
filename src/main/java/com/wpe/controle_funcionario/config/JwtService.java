@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.config;
+package com.wpe.controle_funcionario.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -18,8 +18,7 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-  @Value("${jwt.expiration}")
-  private Long expiration;
+  public static final Integer EXPIRATION = 600_000;
 
   static final String SECRET_KEY = "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970";
 
@@ -45,7 +44,7 @@ public class JwtService {
         .setClaims(extraClaims)
         .setSubject(userDetails.getUsername())
         .setIssuedAt(new Date(System.currentTimeMillis()))
-        .setExpiration(new Date(System.currentTimeMillis() + expiration ))
+        .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION ))
         .signWith(getSignInKey(), SignatureAlgorithm.HS256)
         .compact();
   }

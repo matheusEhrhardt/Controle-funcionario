@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.dto;
+package com.wpe.controle_funcionario.dto;
 
 import com.wpe.controle_funcionario.enums.LogicoEnum;
 

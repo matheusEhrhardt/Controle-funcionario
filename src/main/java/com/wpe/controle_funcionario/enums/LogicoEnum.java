@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.enums;
+package com.wpe.controle_funcionario.enums;
 
 public enum LogicoEnum {
     NAO("Não"),

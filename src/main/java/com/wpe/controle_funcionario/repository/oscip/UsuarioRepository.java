@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.repository.oscip;
+package com.wpe.controle_funcionario.repository.oscip;
 
 import com.wpe.controle_funcionario.view.model.oscip.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;

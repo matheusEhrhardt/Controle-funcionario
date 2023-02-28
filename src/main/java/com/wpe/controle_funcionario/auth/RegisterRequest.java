@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.auth;
+package com.wpe.controle_funcionario.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class RegisterRequest {
 
   private String name;
-  private String email;
+  private String username;
   private String password;
 }

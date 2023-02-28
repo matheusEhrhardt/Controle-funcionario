@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.controller;
+package com.wpe.controle_funcionario.controller;
 
 import com.wpe.controle_funcionario.dto.ControlePontoDTO;
 import com.wpe.controle_funcionario.dto.LoginDTO;

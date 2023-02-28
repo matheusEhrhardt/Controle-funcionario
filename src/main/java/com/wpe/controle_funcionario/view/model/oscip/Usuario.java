@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.model.oscip;
+package com.wpe.controle_funcionario.view.model.oscip;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;

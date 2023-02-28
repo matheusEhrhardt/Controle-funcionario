@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.services;
+package com.wpe.controle_funcionario.service;
 
 import com.wpe.controle_funcionario.dto.ControlePontoDTO;
 import com.wpe.controle_funcionario.exception.ResourceNotFoundException;

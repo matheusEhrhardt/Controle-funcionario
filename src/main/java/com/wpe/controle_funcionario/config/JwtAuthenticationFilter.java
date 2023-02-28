@@ -1,4 +1,4 @@
-package com.marcos.mrcjewelscatalog.config;
+package com.wpe.controle_funcionario.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

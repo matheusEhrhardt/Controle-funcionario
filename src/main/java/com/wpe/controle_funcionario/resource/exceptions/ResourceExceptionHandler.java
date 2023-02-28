@@ -1,7 +1,7 @@
-package com.marcos.mrcjewelscatalog.resource.exceptions;
+package com.wpe.controle_funcionario.resource.exceptions;
 
-import com.marcos.mrcjewelscatalog.services.exceptions.DatabaseException;
-import com.marcos.mrcjewelscatalog.services.exceptions.ResourceNotFoundException;
+import com.wpe.controle_funcionario.service.exceptions.DatabaseException;
+import com.wpe.controle_funcionario.service.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
