@@ -24,7 +24,7 @@ public class UsuarioService{
         Optional<Usuario> usuarioExistente = findByCodigoUsuario(usuario.getCodigoUsuario());
 
         if(usuarioExistente.isPresent()){
-            throw new InputMismatchException("Já existe usuário cadastrado com codigo " + usuario.getCodigoUsuario());
+            throw new RuntimeException("Já existe usuário cadastrado com codigo " + usuario.getCodigoUsuario());
         }
 
         usuario.setSenha(encoder.encode(usuario.getSenha()));
@@ -36,13 +36,13 @@ public class UsuarioService{
         Optional<Usuario> usuario =  findByCodigoUsuario(codigoUsuario);
 
         if(usuario.isEmpty()){
-            throw new ResourceNotFoundException("Login ou senha invalido!");
+            throw new ResourceNotFoundException("Login ou senha inválidos");
         }
 
         Boolean acessoLiberado = encoder.matches(senha, usuario.get().getSenha());
 
         if(!acessoLiberado){
-            throw new ResourceNotFoundException("Login ou senha invalido!");
+            throw new ResourceNotFoundException("Login ou senha inválidos");
         }
 
         return usuario.orElse(null);

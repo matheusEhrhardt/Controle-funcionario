@@ -1,6 +1,7 @@
-package com.wpe.controle_funcionario.auth;
+package com.wpe.controle_funcionario.service;
 
-import com.wpe.controle_funcionario.config.JwtService;
+import com.wpe.controle_funcionario.view.model.auth.AuthenticationRequest;
+import com.wpe.controle_funcionario.view.model.auth.AuthenticationResponse;
 import com.wpe.controle_funcionario.repository.oscip.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

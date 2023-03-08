@@ -1,4 +1,4 @@
-package com.wpe.controle_funcionario.auth;
+package com.wpe.controle_funcionario.view.model.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
+public class AuthenticationRequest {
 
-  private String token;
+  private String username;
+  private String password;
 }

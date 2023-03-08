@@ -24,7 +24,7 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfiguration {
+public class SecurityConfig {
 
   private final JwtAuthenticationFilter jwtAuthFilter;
   private final AuthenticationProvider authenticationProvider;
@@ -41,9 +41,10 @@ public class SecurityConfiguration {
         .disable()
             .cors(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers(antMatcher("/login/token/**")).permitAll()
+                .requestMatchers(antMatcher("/auth/**")).permitAll()
                 //.requestMatchers(antMatcher("/usuario/**")).hasRole("ADMIN")
                 .requestMatchers(antMatcher("/usuario/**")).permitAll()
+                .requestMatchers(antMatcher("/controle-funcionario/**")).permitAll()
                 .requestMatchers(antMatcher(HttpMethod.GET,"/jewels/**")).permitAll()
                 .requestMatchers(antMatcher("/jewels/**")).hasAnyRole("ADMIN","USER")
                 .anyRequest().authenticated());

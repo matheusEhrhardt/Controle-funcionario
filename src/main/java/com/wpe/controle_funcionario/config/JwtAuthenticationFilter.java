@@ -1,5 +1,6 @@
 package com.wpe.controle_funcionario.config;
 
+import com.wpe.controle_funcionario.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
