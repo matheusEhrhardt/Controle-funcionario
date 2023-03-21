@@ -1,7 +1,7 @@
 package com.wpe.controle_funcionario.exception.handler;
 
 import com.wpe.controle_funcionario.exception.ResourceNotFoundException;
-import com.wpe.controle_funcionario.view.model.error.ErrorMessage;
+import com.wpe.controle_funcionario.model.error.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

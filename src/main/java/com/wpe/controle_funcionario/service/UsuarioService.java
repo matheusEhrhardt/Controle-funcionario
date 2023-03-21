@@ -2,12 +2,11 @@ package com.wpe.controle_funcionario.service;
 
 import com.wpe.controle_funcionario.exception.ResourceNotFoundException;
 import com.wpe.controle_funcionario.repository.oscip.UsuarioRepository;
-import com.wpe.controle_funcionario.view.model.oscip.Usuario;
+import com.wpe.controle_funcionario.model.oscip.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.InputMismatchException;
 import java.util.Optional;
 
 @Service

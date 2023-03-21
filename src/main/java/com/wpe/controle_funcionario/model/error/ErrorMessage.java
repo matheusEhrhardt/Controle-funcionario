@@ -1,4 +1,4 @@
-package com.wpe.controle_funcionario.view.model.error;
+package com.wpe.controle_funcionario.model.error;
 
 public class ErrorMessage {
 

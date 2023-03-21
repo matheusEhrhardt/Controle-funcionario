@@ -30,7 +30,7 @@ public class OscipDbConfig {
                                                                      @Qualifier("oscipDataSource") DataSource dataSource){
         return builder
                 .dataSource(dataSource)
-                .packages("com.wpe.controle_funcionario.view.model.oscip")
+                .packages("com.wpe.controle_funcionario.model.oscip")
                 .build();
     }
 }

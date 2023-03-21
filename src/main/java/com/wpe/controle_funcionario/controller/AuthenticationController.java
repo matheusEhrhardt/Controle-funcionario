@@ -1,11 +1,11 @@
-package com.wpe.controle_funcionario.view.controller;
+package com.wpe.controle_funcionario.controller;
 
 import com.wpe.controle_funcionario.dto.LoginDTO;
 import com.wpe.controle_funcionario.service.AuthenticationService;
 import com.wpe.controle_funcionario.service.UsuarioService;
-import com.wpe.controle_funcionario.view.model.auth.AuthenticationRequest;
-import com.wpe.controle_funcionario.view.model.auth.AuthenticationResponse;
-import com.wpe.controle_funcionario.view.model.oscip.Usuario;
+import com.wpe.controle_funcionario.model.auth.AuthenticationRequest;
+import com.wpe.controle_funcionario.model.auth.AuthenticationResponse;
+import com.wpe.controle_funcionario.model.oscip.Usuario;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

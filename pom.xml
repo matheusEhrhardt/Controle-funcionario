@@ -63,9 +63,64 @@
             <artifactId>ojdbc8</artifactId>
             <version>21.5.0.0</version>
         </dependency>
-    </dependencies>
 
+        <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports-->
+<!--        <dependency>-->
+<!--            <groupId>net.sf.jasperreports</groupId>-->
+<!--            <artifactId>jasperreports</artifactId>-->
+<!--            <version>6.20.0</version>-->
+<!--        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.3</version>
+            <scope>provided</scope>
+        </dependency>
+<!--        6.2.2-->
+<!--        <dependency>-->
+<!--            <groupId>net.sf.jasperreports</groupId>-->
+<!--            <artifactId>jasperreports</artifactId>-->
+<!--            <version>6.2.2</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>com.lowagie</groupId>-->
+<!--                    <artifactId>itext</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>net.sf.jasperreports</groupId>-->
+<!--            <artifactId>jasperreports-fonts</artifactId>-->
+<!--            <version>6.20.0</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports-fonts &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>net.sf.jasperreports</groupId>-->
+<!--            <artifactId>jasperreports-fonts</artifactId>-->
+<!--            <version>6.20.0</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.20.0</version>
+        </dependency>
+
+    </dependencies>
+    <repositories>
+    </repositories>
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.4.0.905</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

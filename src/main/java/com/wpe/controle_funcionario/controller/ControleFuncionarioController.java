@@ -1,8 +1,8 @@
-package com.wpe.controle_funcionario.view.controller;
+package com.wpe.controle_funcionario.controller;
 
 import com.wpe.controle_funcionario.dto.ControleFuncionarioDTO;
 import com.wpe.controle_funcionario.service.ControleFuncionarioService;
-import com.wpe.controle_funcionario.view.model.oscip.ControleFuncionario;
+import com.wpe.controle_funcionario.model.oscip.ControleFuncionario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

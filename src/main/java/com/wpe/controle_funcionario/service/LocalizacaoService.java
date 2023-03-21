@@ -2,7 +2,7 @@ package com.wpe.controle_funcionario.service;
 
 import com.wpe.controle_funcionario.dto.LocalizacaoDTO;
 import com.wpe.controle_funcionario.repository.oscip.LocalizacaoRepository;
-import com.wpe.controle_funcionario.view.model.oscip.Localizacao;
+import com.wpe.controle_funcionario.model.oscip.Localizacao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
